@@ -17,16 +17,33 @@ public class day1 {
             Stream<String> lines = Files.lines(Paths.get(fileName));
             lines.forEach(e -> {
                 input.add(Integer.parseInt(e));
-//                System.out.println(e);
             });
             lines.close();
         } catch(IOException e) {
             e.printStackTrace();
         }
 
-        int sum = input.stream().reduce(0, (a, b) -> a + b);
+        System.out.println("Part 1 sum: " + part1(input));
+        System.out.println("Part 2 result: " + part2(input));
+    }
 
-        System.out.println("input size: " + input.size());
-        System.out.println("input sum: " + sum);
+    private static int part1(List<Integer> inputList) {
+        return inputList.stream().reduce(0, (a, b) -> a + b);
+    }
+
+    //To get the first frequency that duplicates
+    private static int part2(List<Integer> inputList) {
+        List<Integer> tmpSumList = new ArrayList<>();
+        int result = 0;
+
+        while (true) {
+            for (int i: inputList) {
+                if (tmpSumList.contains(result)) {
+                    return result;
+                }
+                tmpSumList.add(result);
+                result += i;
+            }
+        }
     }
 }
