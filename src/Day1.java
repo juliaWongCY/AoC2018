@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class day1 {
+public class Day1 {
 
     public static void main(String[] args) {
         //https://examples.javacodegeeks.com/core-java/java-8-read-file-line-line-example/
@@ -15,9 +15,7 @@ public class day1 {
 
         try  {
             Stream<String> lines = Files.lines(Paths.get(fileName));
-            lines.forEach(e -> {
-                input.add(Integer.parseInt(e));
-            });
+            lines.forEach(e -> input.add(Integer.parseInt(e)));
             lines.close();
         } catch(IOException e) {
             e.printStackTrace();
