@@ -20,6 +20,7 @@ public class Day2 {
       }
 //      System.out.println("input: " + input.toString());
       System.out.println("Part1 answer: " + part1FindCheckSum(input));
+      System.out.println("Part2 answer: " + part2(input));
     }
 
     private static int part1FindCheckSum(List<String> inputList) {
@@ -53,5 +54,25 @@ public class Day2 {
 
       }
       return countFor2 * countFor3;
+    }
+
+    private static String part2(List<String> inputList){
+      StringBuilder matchingStringBuilder = new StringBuilder();
+
+      for (String str: inputList) {
+        for (String str2: inputList){
+          for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == str2.charAt(i)) {
+              matchingStringBuilder.append(str.charAt(i));
+            }
+          }
+          if (matchingStringBuilder.length() == str.length() - 1){
+            return matchingStringBuilder.toString();
+          }  else {
+            matchingStringBuilder.setLength(0);
+          }
+        }
+      }
+      return null;
     }
 }
